@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Sample Page</title>
+</head>
+<body>
+  <div id="app">
+    <button @click="fetchDotaHeroes">Fetch DOTA Heroes!</button> <!-- fetchDotaHeroes function executes when clicked -->
+    <ul>
+      <li v-for="dotaHero in dotaHeroes">{{ dotaHero }}</li> <!-- Loop dotaHeroes array -->
+    </ul>
+  </div>
+
+  <!-- Importing vuejs library -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> 
+  <script>
+    let vm = new Vue({
+      el: '#app',
+      data: {
+        dotaHeroes: []
+      },
+      methods: {
+        fetchDotaHeroes() {
+          // Fetch the heroes from opendota api
+          fetch('https://api.opendota.com/api/heroes')
+            .then((response) => {
+              return response.json() //parse the response as JSON and returning it as a promise.
+            }).then((data) => {
+              /*  
+                  creates an array containing ONLY the names of the heroes.
+                  you can try logging the data variable here to see other properties from the api 
+              */
+              let localizedNames = data.map(dotaHero => {
+                return dotaHero.localized_name
+              })
+
+              this.dotaHeroes = localizedNames
+            })
+        }
+      }
+    })
+  </script>
+
+</body>
+</html>

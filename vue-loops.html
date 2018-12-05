@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Sample Page</title>
+</head>
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="food in foods">{{ food }}</li> <!-- Loop each item in the foods array -->
+    </ul>
+  </div>
+
+  <!-- Importing vuejs library -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> 
+  <script>
+    let vm = new Vue({
+      el: '#app',
+      data: {
+        foods: ['spaghetti', 'shawarma', 'chicken']
+      }
+    })
+
+    // You can uncomment the code below to add a food after 3 seconds.
+
+    // setTimeout(() => {
+    //   vm.foods.push('knickerbocker')
+    // }, 3000)
+  </script>
+
+</body>
+</html>

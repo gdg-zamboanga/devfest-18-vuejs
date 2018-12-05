@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Sample Page</title>
+</head>
+<body>
+  <div id="app">
+    <!-- As you type in the input box, the name property changes and the view is updated reactively -->
+    <h1>{{ name }}</h1>
+    <input type="text" v-model="name">
+  </div>
+
+  <!-- Importing vuejs library -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> 
+  <script>
+    let vm = new Vue({
+      el: '#app',
+      data: {
+        name: ''
+      }
+    })
+  </script>
+
+</body>
+</html>
